@@ -16,20 +16,27 @@
 
 class User:
 
-    def __init__(self, first, password):
-        self.first = first
-        self.pwd = password
+    def __init__(self, name, password):
+        self._name = name
+        self._password = password
         self.is_admin = False
-        self._admin = False
         self._is_logged_in = False
 
     @property
     def name(self):
-        return f'{self.first}'
+        return f'{self._name}'
+
+    @name.setter
+    def name(self, name):
+        self._name = name
 
     @property
     def password(self):
-        return f'{self.pwd}'
+        return f'{self._password}'
+
+    @password.setter
+    def password(self, password):
+        self._password = password
 
     @property
     def _is_admin(self):
@@ -39,12 +46,9 @@ class User:
     def _is_admin(self, booly):
         self.is_admin = booly
 
-    @password.setter
-    def password(self, password):
-        self.pwd = password
 
     def login(self, password):
-        if password == self.password:
+        if password == self._password:
             print('True')
         else:
             print('False')
