@@ -6,13 +6,24 @@
 и выводит время выполнения блока кода.
 """
 
+import time
+
 
 class Timer:
-    pass
+    def __init__(self):
+        self.elapsed_time = 0
+
+    def __enter__(self):
+        self.start = time.time()
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.stop = time.time()
+        self.elapsed_time = self.stop - self.start
+        return self.elapsed_time
 
 
 with Timer() as timer:
-    # блок кода
-    
-    # код для проверки 
+    a = sum(range(1, 200))
+    print(a)
+
     print("Execution time:", timer.elapsed_time)

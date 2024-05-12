@@ -8,7 +8,14 @@
 
 
 class Logger:
-    pass
+    def __init__(self, filename):
+        self.filename = filename
+
+    def __call__(self, message):
+        with open(self.filename, 'r') as r_file:
+            r_file = r_file.read()
+        with open(self.filename, 'w') as w_file:
+            w_file.write(r_file + '\n' + message)
 
 
 # код для проверки 
