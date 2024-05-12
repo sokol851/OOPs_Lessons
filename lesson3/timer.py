@@ -11,19 +11,17 @@ import time
 
 class Timer:
     def __init__(self):
-        self.elapsed_time = 0
+        self.elapsed_time = time.perf_counter()
 
     def __enter__(self):
-        self.start = time.time()
+        self.elapsed_time = time.perf_counter()
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        self.stop = time.time()
-        self.elapsed_time = self.stop - self.start
-        return self.elapsed_time
+        self.elapsed_time = time.perf_counter() - self.elapsed_time
 
 
-with Timer() as timer:
-    a = sum(range(1, 200))
-    print(a)
+timer = Timer()
+with timer:
+    time.sleep(3)
 
-    print("Execution time:", timer.elapsed_time)
+print("Execution time:", timer.elapsed_time)
