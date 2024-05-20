@@ -10,20 +10,27 @@
 
 
 class Student:
-    pass
+    __slots__ = ('name', 'age', 'grades')
 
 
-# код для проверки 
+class Course:
+    __slots__ = ('name', 'students')
+
+
+# код для проверки
 student1 = Student()
 student1.name = "John"
 student1.age = 20
 student1.grades = [90, 80, 85]
+print(student1.name, student1.age, student1.grades)
 
 student2 = Student()
 student2.name = "Jane"
 student2.age = 21
 student2.grades = [95, 85, 90]
+print(student2.name, student2.age, student2.grades)
 
 course = Course()
 course.name = "Math"
 course.students = [student1, student2]
+print(f'{course.name} - [{course.students[0].name}, {course.students[1].name}]')

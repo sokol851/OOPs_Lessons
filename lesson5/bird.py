@@ -14,10 +14,24 @@
 
 
 class Bird:
-    pass
+    @staticmethod
+    def fly():
+        print('Flying')
 
 
-# код для проверки 
+class Penguin(Bird):
+    @staticmethod
+    def fly():
+        print('I am a penguin and cannot fly')
+
+
+class Eagle(Bird):
+    @staticmethod
+    def hunt():
+        print('Hunting')
+
+
+# код для проверки
 bird = Bird()
 bird.fly()  # Flying
 

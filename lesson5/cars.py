@@ -12,21 +12,40 @@
 Для этого каждому классу напишите метод get_set_del,
 в котором происходи получение, присваивание и удаление значения.
 """
+import timeit
 
 
 class Car:
-    pass
+    def __init__(self, brand, model, year):
+        self.brand = brand
+        self.model = model
+        self.year = year
+
+    def get_set_del(self):
+        self.model = 'Passat'
+        del self.model
+        return f'{self.brand}'
 
 
 class CarSlots:
-    pass
+    __slots__ = ('brand', 'model', 'year')
+
+    def __init__(self, brand, model, year):
+        self.brand = brand
+        self.model = model
+        self.year = year
+
+    def get_set_del(self):
+        self.model = 'Passat'
+        del self.model
+        return f'{self.brand}'
 
 
 car = Car('Toyota', 'Corolla', 2022)
 car_slots = Car('Toyota', 'Crown', 1990)
 
-import timeit
-
 t1 = timeit.timeit(car.get_set_del)
 t2 = timeit.timeit(car_slots.get_set_del)
-print((t1-t2)/t1*100)
+print(t1)
+print(t2)
+print((t1 - t2) / t1 * 100)
