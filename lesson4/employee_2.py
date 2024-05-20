@@ -6,15 +6,26 @@
 
 
 class Employee:
-
     def __init__(self, pay):
         self.pay = pay
+
+    def __add__(self, other):
+        # if isinstance(other, int):
+        if isinstance(other, int):
+            return self.pay + other
+        if isinstance(other, Employee):
+            return self.pay + other.pay
+        return self.pay
 
 
 class Client:
-
     def __init__(self, pay):
         self.pay = pay
+
+    def __add__(self, other):
+        if isinstance(other, self.__class__):
+            return self.pay + other.pay
+        return other
 
 
 class Developer(Employee):

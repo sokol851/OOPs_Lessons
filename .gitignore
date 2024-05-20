@@ -5,6 +5,8 @@ __pycache__/
 1.py
 2.py
 3.py
+4.py
+5.py
 # C extensions
 *.so
 
